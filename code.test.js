@@ -23,4 +23,4 @@ const test =
         return fibonacci(n) == test[test.length-1];
         
     });
-jsc.assert(test);
+jsc.assert(test, {tests: 1000});
