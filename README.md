@@ -15,3 +15,17 @@ implementation. What changes between iterations of the loop?
 Is the asymptotic complexity of tail-recursive Fibonacci different from the
 non-tail-recursive version? Why, or why not? Add your answer, including your
 reasoning, to this markdown file.
+
+
+# Response
+
+The asymptotic complexity of tail-recursive Fibonacci isn't different.
+
+The asymptotic complexity of non-tail recursive can be expressed by the following:
+$T(n) = T(n-1) + T(n-2)$
+$= 2T(n-2) + T(n-3)$
+$= 3T(n-3)+2T(n-4)$
+$= 5T(n-4)+3T(n-5)$
+Interestingly enough, this actually follows the size of the Fibonacci Sequence itself. Since each iteration of the Fibonnaci sequence calls itself twice, therefore scaling at $2^n$. However, a smarter implementation using memoization like I did for the Fibonnaci Invariants exercise avoids this problem, as it simply passes one array between its recursions and builds a list of Fibonnaci elements that it can simply grab from, making it a linear complexity as it isn't redoing any calculations.
+
+The way I have implemented it here is also linear in time complexity, as it saves the past two elements in the sequence and calculates forward to the desired number. However, this has the advantage of also being in-place, as it only fetches the single element of the sequence that is required instead of all elements up to that.
